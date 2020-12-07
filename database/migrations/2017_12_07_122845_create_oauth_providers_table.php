@@ -17,11 +17,10 @@ class CreateOauthProvidersTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->string('provider');
-            $table->string('provider_user_id')->index();
+            $table->string('provider_user_id',30)->index();
             $table->string('access_token')->nullable();
             $table->string('refresh_token')->nullable();
             $table->timestamps();
-
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')

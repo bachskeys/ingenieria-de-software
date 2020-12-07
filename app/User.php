@@ -8,7 +8,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use App\Prestamo;
 class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
 {
     use Notifiable;
@@ -105,4 +105,22 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
     {
         return [];
     }
+
+    public function prestamos(){
+        return $this->hasMany('App\Prestamo','user_id');
+    }
+    public function rentar($articulo){
+        $prestamo = new Prestamo();
+        $prestamo->user_id = $this->id;
+        $prestamo->articulo_id = $articulo;
+        $prestamo->status = true;
+        $save= $prestamo->save();
+
+        if($save){
+            return json_encode("libro prestado con exito con exito");
+        }
+        return json_encode('hubo un error al prestar el libro');
+
+    }
+
 }
