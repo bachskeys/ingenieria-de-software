@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
+
 
 class RegisterController extends Controller
 {
@@ -64,10 +66,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $identidad = (string) Str::uuid();
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+             'telefono' => $data['telefono'],
+             'direccion' => $data['direccion'],
+             'numeroIdentidad'=>$identidad
         ]);
     }
 }

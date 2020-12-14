@@ -14,10 +14,12 @@ class CreatePrestamosTable extends Migration
     public function up()
     {
         Schema::create('prestamos', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->bigInteger('user_id');
             $table->bigInteger('articulo_id');
             $table->date('Fecha_prestamo')->nullable();
             $table->date('Fecha_entrega')->nullable();
+            $table->date('Fecha_entregado')->nullable();
             $table->boolean('status');
             $table->timestamps();
         });

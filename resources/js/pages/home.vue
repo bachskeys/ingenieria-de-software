@@ -1,15 +1,21 @@
 <template>
-  <card :title="$t('home')">
-    {{ $t('you_are_logged_in') }}
-    <fetch-users />
+<div>
+  <card :title="$t('home')" class="mt-5">
+    <home-user />
   </card>
+   <card :title="$t('Prestamos')" class="mt-5">
+    <UserPrestamos />
+  </card>
+</div>
 </template>
 
 <script>
-import FetchUsers from '~/components/FetchUsers'
+import HomeUser from '~/components/HomeUser'
+import UserPrestamos from '~/components/UserPrestamos.vue'
 export default {
   components: {
-    FetchUsers
+    HomeUser,
+    UserPrestamos
   },
   middleware: 'auth',
 

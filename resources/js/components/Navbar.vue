@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <router-link :to="{ name: user ? 'home' : 'welcome' }" class="navbar-brand">
-        {{ appName }}
+         {{ $t('library') }}
       </router-link>
 
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false">
@@ -31,7 +31,22 @@
                 <fa icon="cog" fixed-width />
                 {{ $t('settings') }}
               </router-link>
-
+               <router-link :to="{ name: 'alta-libro' }" class="dropdown-item pl-3">
+                <fa icon="cog" fixed-width />
+                {{ $t('alta libro') }}
+              </router-link>
+               <router-link :to="{ name: 'alta-revista' }" class="dropdown-item pl-3">
+                <fa icon="cog" fixed-width />
+                {{ $t('alta revista') }}
+              </router-link>
+               <router-link :to="{ name: 'libro-prestar' }" class="dropdown-item pl-3">
+                <fa icon="cog" fixed-width />
+                {{ $t('prestar libro') }}
+              </router-link>
+                 <router-link :to="{ name: 'libro-entregar' }" class="dropdown-item pl-3">
+                <fa icon="cog" fixed-width />
+                {{ $t('entregar libro') }}
+              </router-link>
               <div class="dropdown-divider" />
               <a href="#" class="dropdown-item pl-3" @click.prevent="logout">
                 <fa icon="sign-out-alt" fixed-width />

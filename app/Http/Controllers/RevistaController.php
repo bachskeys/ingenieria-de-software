@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 
-use App\Libro;
+use App\Revista;
 use App\Articulo;
 use App\User;
 
-class LibroController extends Controller
+class RevistaController extends Controller
 {
-    public function crearLibro(Request $request){
+    public function crearRevista(Request $request){
         // then put that name to $photoName variable.
         $photoName = '';
       if($request->file('imagen')){
@@ -25,24 +25,14 @@ class LibroController extends Controller
       }
    
         (int)$copias = $request->copias;
-        $libro = new Libro();
-        $libro->titulo = $request->titulo;
-        $libro->author = $request->author;
-        $libro->descripcion = $request->descripcion;
-        $libro->imagen = $photoName;
-        $libro->save();
+        $revista = new Revista();
+        $revista->titulo = $request->titulo;
+        $revista->descripcion = $request->descripcion;
+        $revista->save();
         for ($i = 1; $i <= $copias; $i++) {
-            $libro->crearArticulo();
+            $revista->crearArticulo();
         }
-        return $libro;
-    }
-    public function getAllLibros(){
-        $models = Libro::All();
-        $models->each(function ($item){
-           return $item->copiasDisponibles();
-        });
-       return $models;
+        return $revista;
     }
   
 }
-

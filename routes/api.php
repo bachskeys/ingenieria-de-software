@@ -25,6 +25,17 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/users', function () {
         return App\User::all();
     });
+    Route::post('crear/libro','LibroController@crearLibro');
+    Route::post('crear/revista','RevistaController@crearRevista');
+    Route::post('/prestar','ArticuloController@prestarArticuloEncargado');
+    Route::get('/libros','LibroController@getAllLibros');
+    Route::get('/user/prestamos','ArticuloController@userPrestamos');
+    Route::post('/encargado/prestamos','ArticuloController@encargadoPrestamos');
+    Route::post('/encargado-prestamos','ArticuloController@encargadoPrestamos');
+    Route::post('/encargado-entregar','ArticuloController@encargadoEntregar');
+
+
+
 
     Route::patch('settings/profile', 'Settings\ProfileController@update');
     Route::patch('settings/password', 'Settings\PasswordController@update');
@@ -41,7 +52,6 @@ Route::group(['middleware' => 'guest:api'], function () {
 
     Route::post('oauth/{driver}', 'Auth\OAuthController@redirectToProvider');
     Route::get('oauth/{driver}/callback', 'Auth\OAuthController@handleProviderCallback')->name('oauth.callback');
-
-    Route::post('crear/libro','LibroController@crearLibro');
     Route::post('borrar/articulo','ArticuloController@borrarArticulo');
+
 });

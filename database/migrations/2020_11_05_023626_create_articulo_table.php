@@ -15,8 +15,10 @@ class CreateArticuloTable extends Migration
     {
         Schema::create('articulos', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->boolean('prestado')->default(false);
             $table->integer('prestable_id');
             $table->string('prestable_type');
+            $table->boolean('utilizable')->default(true);
             $table->softDeletes();
             $table->timestamps();
         });

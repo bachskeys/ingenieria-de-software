@@ -43,6 +43,22 @@
               <has-error :form="form" field="password_confirmation" />
             </div>
           </div>
+            <!-- Telefono -->
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label text-md-right">{{ $t('phone') }}</label>
+            <div class="col-md-7">
+              <input v-model="form.telefono" :class="{ 'is-invalid': form.errors.has('telefono') }" class="form-control" type="phone" name="telefono">
+              <has-error :form="form" field="telefono" />
+            </div>
+          </div>
+            <!-- direccion -->
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label text-md-right">{{ $t('adress') }}</label>
+            <div class="col-md-7">
+              <input v-model="form.direccion" :class="{ 'is-invalid': form.errors.has('direccion') }" class="form-control" type="adress" name="direccion">
+              <has-error :form="form" field="direccion" />
+            </div>
+          </div>
 
           <div class="form-group row">
             <div class="col-md-7 offset-md-3 d-flex">
@@ -81,7 +97,9 @@ export default {
       name: '',
       email: '',
       password: '',
-      password_confirmation: ''
+      password_confirmation: '',
+      telefono:'',
+      direccion:'',
     }),
     mustVerifyEmail: false
   }),
